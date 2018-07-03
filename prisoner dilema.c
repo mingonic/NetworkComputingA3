@@ -89,7 +89,7 @@ int main(int argc, char const *argv[])
           }
           //printf("Hello message sent\n");
           close(new_socket);
-          return;
+          return 0;
        }
        else {
         close(new_socket);
@@ -98,7 +98,6 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-Client:
 
 
 #include <stdio.h>
