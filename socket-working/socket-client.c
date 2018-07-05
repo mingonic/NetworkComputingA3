@@ -32,6 +32,14 @@ int main(void)
       return 1;
     }
 
+  char input[2];
+  scanf("Type S to remain silent or type B to betray", &input);
+  while (input != 'S' || input != 'B') {
+      scanf("Input not valid. Type S to remain silent or type B to betray", &input);
+  }
+  send(sockfd, input, strlen(input), 0);
+  printf("sent");
+
   while((n = read(sockfd, recvBuff, sizeof(recvBuff)-1)) > 0)
     {
       recvBuff[n] = 0;

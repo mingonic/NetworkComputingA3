@@ -37,8 +37,28 @@ int main(void)
   while(1)
     {
       connfd = accept(listenfd, (struct sockaddr*)NULL ,NULL); // accept awaiting request
+      //got char containing b or s
+      char client[1] = 'B';
+      int ran = rand() % 2;
+      char server[1];
+      if (ran == 0)
+        server[0] = 'S';
+      else if (ran == 1)
+        server[0] = 'B';
 
-      strcpy(sendBuff, "Message from server");
+      if (server == 'B' && client == "B"){
+        strcpy(sendBuff, "2 years of imprisoment for the client and the server.");
+      }
+      else if (server == 'S' && client == 'B'){
+        strcpy(sendBuff, "Client is free and Server is imprisoned for 3 years.");
+      }
+      else if (server == 'B' && client == 'S'){
+        strcpy(sendBuff, "Server is free and Client is imprisoned for 3 years.");
+      }
+      else if (server == 'S' && client == 'S'){
+        strcpy(sendBuff, "1 year of prison for Server and Client");
+      }
+
       write(connfd, sendBuff, strlen(sendBuff));
 
       close(connfd);
